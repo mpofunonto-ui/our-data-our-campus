@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Networking – Our Data, Our Campus</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#fde68a,#fef3c7); /* bright yellow-orange gradient */
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+/* Floating Background Circles */
+.animated-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(135deg,#fde68a,#fef3c7); }
+.shape { position: absolute; border-radius: 50%; opacity: 0.25; animation: floatShape 25s ease-in-out infinite alternate; }
+@keyframes floatShape { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-60px) translateX(40px); } }
+.shape1 { width: 250px; height: 250px; background: #fbbf24; top: 20%; left: 10%; }
+.shape2 { width: 300px; height: 300px; background: #fcd34d; top: 50%; left: 70%; animation-delay: 3s; }
+.shape3 { width: 200px; height: 200px; background: #fde68a; top: 75%; left: 25%; animation-delay: 6s; }
+.shape4 { width: 280px; height: 280px; background: #fef3c7; top: 10%; left: 60%; animation-delay: 9s; }
+
+/* Container */
+.container { max-width: 700px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+h1 { color: #b45309; font-size: 2rem; margin-bottom: 20px; }
+
+/* Event Card */
+#event-list {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.event-item {
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s, opacity 0.6s;
+}
+.event-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.event-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: rgba(255,255,255,0.05);
+}
+.event-item h3 {
+  color: #b45309; /* matches heading and theme */
+  margin: 0 0 6px;
+}
+.event-item p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+/* Button */
+.view-btn {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: #fbbf24; /* matching the theme */
+  color: #1e293b;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.view-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #b45309;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.back-btn:hover { background: #d97706; }
+</style>
+</head>
+<body>
+
+<div class="animated-bg"></div>
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+<div class="shape shape4"></div>
+
+<div class="container">
+  <h1>Networking Event</h1>
+  <p>Click <strong>ATTEND</strong> to register for this event.</p>
+   
+
+  <div id="event-list"></div>
+  <a href="events-dashboard.html" class="back-btn">⬅ Back to Events Lists</a>
+</div>
+
+  
+
+<script>
+// ✅ Updated Networking Event
+const networking = {
+  title: "Speed Networking",
+  date: "2025-10-04",
+  time: "13:00 – 15:30",
+  location: "Humanities Building Classroom 1 (003)",
+  description: "Join us for the Speed Networking Event, an interactive micro-event hosted by Data Science students. Discover how your shared hobbies and interests connect you with others through engaging live data visualizations built using R and Shiny.",
+  img: "images/social.jpg",
+  link: "https://forms.gle/YOUR_GOOGLE_FORM_LINK" // 🔗 Replace with your actual registration form link
+};
+
+const eventList = document.getElementById("event-list");
+
+const card = document.createElement("div");
+card.className = "event-item";
+card.innerHTML = `
+  <div class="event-img" style="background-image: url('${networking.img}'); background-size: cover; background-position: center;"></div>
+  <h3>${networking.title}</h3>
+  <p><strong>Date:</strong> ${networking.date}</p>
+  <p><strong>Time:</strong> ${networking.time}</p>
+  <p><strong>Location:</strong> ${networking.location}</p>
+  <p>${networking.description}</p>
+  <button class="view-btn" onclick="window.location.href='${networking.link}'">ATTEND</button>
+`;
+eventList.appendChild(card);
+
+// Animate the single card
+setTimeout(() => { card.classList.add("show"); }, 300);
+</script>
+
+</body>
+</html>

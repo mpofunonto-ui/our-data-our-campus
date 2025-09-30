@@ -1,0 +1,83 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
+
+/* Gradient Background */
+.animated-bg {
+  position: fixed; width:100%; height:100%;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: -1;
+}
+@keyframes gradientBG {
+  0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;}
+}
+
+/* Floating Shapes */
+.shape { position: fixed; border-radius: 50%; opacity: 0.3; animation: float 20s linear infinite; z-index:-1; }
+.shape1 { width: 100px; height:100px; background:#ff6f61; top:10%; left:5%; animation-delay:0s; }
+.shape2 { width:60px;height:60px;background:#6a82fb;top:40%;left:80%;animation-delay:5s; }
+.shape3 { width:80px;height:80px;background:#fbd72b;top:70%;left:30%;animation-delay:10s; }
+.shape4 { width:50px;height:50px;background:#1abc9c;top:20%;left:60%;animation-delay:15s; }
+.shape5 { width:70px;height:70px;background:#9b59b6;top:80%;left:15%;animation-delay:20s; }
+@keyframes float { 0% {transform:translateY(0) rotate(0deg);} 50% {transform:translateY(-40px) rotate(180deg);} 100% {transform:translateY(0) rotate(360deg);} }
+
+/* Fade In */
+@keyframes fadeIn {0%{opacity:0;transform:translate(-50%,-60%);}100%{opacity:1;transform:translate(-50%,-50%);}}
+
+/* Cards */
+.login-card, .form-card, .dashboard-card {
+  position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+  background: rgba(0,0,0,0.6); padding:50px 40px; border-radius:20px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.5); text-align:center; width:360px;
+  border:1px solid rgba(255,255,255,0.3); animation: fadeIn 1.5s ease forwards;
+}
+.dashboard-card { width:90%; max-width:1000px; }
+
+/* Titles & Text */
+h1 { color:#ffd700; margin-bottom:10px; text-shadow:0 2px 5px rgba(0,0,0,0.5);}
+p { color:#fff; margin-bottom:15px; font-weight:400; }
+
+/* Inputs & Textarea */
+input, textarea {
+  width:100%; padding:12px 15px; margin-bottom:20px;
+  border-radius:10px; border:none; font-size:1rem; outline:none;
+  background: rgba(255,255,255,0.2); color:#fff; transition:0.3s;
+}
+input::placeholder, textarea::placeholder { color:#eee; opacity:0.8; }
+input:focus, textarea:focus { background: rgba(255,255,255,0.35); box-shadow:0 0 10px rgba(255,255,255,0.5); }
+
+/* Buttons */
+button, .btn {
+  width:100%; padding:12px; border-radius:10px; border:none;
+  background:#ff6f61; color:#fff; font-weight:bold; font-size:1.1rem;
+  cursor:pointer; transition:all 0.3s ease; text-decoration:none; display:inline-block; text-align:center;
+}
+button:hover, .btn:hover { background:#ff3b2e; transform:translateY(-3px); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+
+/* Logout Button */
+.btn.logout { background:#ff3b2e; }
+.btn.logout:hover { background:#e74c3c; }
+
+/* Event Cards */
+.event-card {
+  background: rgba(255,255,255,0.15); padding:15px; border-radius:12px;
+  margin:10px 0; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition:transform 0.3s, box-shadow 0.3s; color:#fff;
+}
+.event-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.4); }
+.event-card h3 { margin-bottom:5px; font-size:1.2rem; }
+.event-card p { font-size:0.9rem; color:#ddd; }
+
+/* Event Type Cards */
+.event-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:25px; }
+.event-type-card { padding:20px 10px; border-radius:15px; text-align:center; font-weight:600; color:#fff; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; cursor:pointer;}
+.event-type-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.4); filter:brightness(1.1); }
+
+/* Color-coded event types */
+.bootcamp { background:#e74c3c; } .conference{background:#3498db;} .dance{background:#9b59b6;} .demo{background:#f39c12;} .escape{background:#1abc9c;} 
+.game{background:#e67e22;} .hackathon{background:#2ecc71;} .installation{background:#8e44ad;} .keynote{background:#f1c40f;} .kiosk{background:#34495e;} 
+.launch{background:#d35400;} .maker{background:#16a085;} .musical{background:#c0392b;} .networking{background:#2980b9;} .online{background:#27ae60;} 
+.panel{background:#e84393;} .performance{background:#fd79a8;} .roundtable{background:#00b894;} .show{background:#6c5ce7;} .talk{background:#e17055;} 
+.talkpres{background:#00cec9;} .training{background:#ff7675;} .walk{background:#ffeaa7; color:#000;} .walkshop{background:#74b9ff;} .workshop{background:#a29bfe;}
+
+

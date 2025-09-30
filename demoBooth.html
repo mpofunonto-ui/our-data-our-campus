@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Booth – Our Data, Our Campus</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#cffafe,#e0f7fa); /* bright cyan gradient */
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* Floating Background Circles */
+.animated-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(135deg,#cffafe,#e0f7fa); }
+.shape { position: absolute; border-radius: 50%; opacity: 0.25; animation: floatShape 25s ease-in-out infinite alternate; }
+@keyframes floatShape { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-60px) translateX(40px); } }
+.shape1 { width: 250px; height: 250px; background: #06b6d4; top: 20%; left: 10%; }
+.shape2 { width: 300px; height: 300px; background: #22d3ee; top: 50%; left: 70%; animation-delay: 3s; }
+.shape3 { width: 200px; height: 200px; background: #67e8f9; top: 75%; left: 25%; animation-delay: 6s; }
+.shape4 { width: 280px; height: 280px; background: #a5f3fc; top: 10%; left: 60%; animation-delay: 9s; }
+
+/* Container */
+.container { max-width: 700px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+h1 { color: #06b6d4; font-size: 2rem; margin-bottom: 20px; }
+
+/* Event Card */
+#event-list {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.event-item {
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s, opacity 0.6s;
+}
+.event-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.event-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: rgba(255,255,255,0.05);
+}
+.event-item h3 {
+  color: #06b6d4; /* Demo Booth color */
+  margin: 0 0 6px;
+}
+.event-item p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+/* Button */
+.view-btn {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background: #06b6d4; /* matching theme */
+  color: #0f172a;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.view-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #0284c7;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.back-btn:hover { background: #0ea5e9; }
+</style>
+</head>
+<body>
+
+<div class="animated-bg"></div>
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+<div class="shape shape4"></div>
+
+<div class="container">
+  <h1>Demo Booth Event</h1>
+  <p>Click <strong>ATTEND</strong> to register for this event.</p>
+
+  <div id="event-list"></div>
+  <a href="events-dashboard.html" class="back-btn">⬅ Back to Events Lists</a>
+</div>
+
+<script>
+// ✅ Demo Booth Event Data
+const demoBooth = {
+  title: "Interactive Machine Learning",
+  date: "2025-10-04",
+  time: "12H00 – 13H00",
+  location: "Lab 1",
+  description: "Join us for a fun and interactive Machine Learning session where you can test a simple model using your own data—like study hours, sleep, and attendance—and see instant predictions. After the workshop, drop by our demo booth to keep experimenting, challenge friends, and explore how AI shows up in everyday life.",
+  img: "images/interactiveML.png",
+  link: "https://forms.gle/YOUR_GOOGLE_FORM_LINK" // 🔗 Replace with your actual registration form link
+};
+
+const eventList = document.getElementById("event-list");
+
+const card = document.createElement("div");
+card.className = "event-item";
+card.innerHTML = `
+  <div class="event-img" style="background-image: url('${demoBooth.img}'); background-size: cover; background-position: center;"></div>
+  <h3>${demoBooth.title}</h3>
+  <p><strong>Date:</strong> ${demoBooth.date}</p>
+  <p><strong>Time:</strong> ${demoBooth.time}</p>
+  <p><strong>Location:</strong> ${demoBooth.location}</p>
+  <p>${demoBooth.description}</p>
+  <button class="view-btn" onclick="window.location.href='${demoBooth.link}'">ATTEND</button>
+`;
+eventList.appendChild(card);
+
+// Animate the single card
+setTimeout(() => { card.classList.add("show"); }, 300);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events Dashboard – Our Data, Our Campus</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- AOS Animation -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+/* ===== Base ===== */
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  overflow-x: hidden;
+  color: #e2e8f0;
+}
+
+/* ===== Floating Background Circles ===== */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  animation: bgShift 10s ease-in-out infinite alternate;
+}
+@keyframes bgShift {
+  0%   { filter: brightness(0.7); }
+  100% { filter: brightness(1); }
+}
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: floatShape 20s ease-in-out infinite alternate;
+}
+@keyframes floatShape {
+  0%   { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-60px) translateX(40px); }
+}
+.shape1 { width: 200px; height: 200px; background: #38bdf8; top: 20%; left: 10%; }
+.shape2 { width: 250px; height: 250px; background: #f472b6; top: 40%; left: 70%; animation-delay: 3s; }
+.shape3 { width: 180px; height: 180px; background: #a78bfa; top: 70%; left: 20%; animation-delay: 6s; }
+.shape4 { width: 300px; height: 300px; background: #facc15; top: 10%; left: 50%; animation-delay: 9s; }
+.shape5 { width: 220px; height: 220px; background: #34d399; top: 60%; left: 80%; animation-delay: 12s; }
+
+/* ===== Section Layout ===== */
+#events {
+  position: relative;
+  padding: 60px 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+#events h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #7dd3fc;
+}
+#search {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 90%;
+  max-width: 400px;
+  padding: 12px 14px;
+  border: 1px solid #7dd3fc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+#search:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* ===== Grid of Event Cards ===== */
+#event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 24px;
+  padding: 0 10px;
+}
+.event-card {
+  border-radius: 14px;
+  padding: 30px 20px;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(255,255,255,0.8); /* Glow on hover */
+}
+
+/* ===== Back Button ===== */
+.back-btn {
+  display: block;
+  text-align: center;
+  margin: 30px auto;
+  padding: 12px 28px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+  max-width: 220px;
+}
+.back-btn:hover {
+  background: #7dd3fc;
+}
+</style>
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="animated-bg"></div>
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+<div class="shape shape4"></div>
+<div class="shape shape5"></div>
+
+<!-- Event Section -->
+<section id="events">
+  <h2>Explore Event Types</h2>
+  <input id="search" type="text" placeholder="Search event types...">
+  <div id="event-list"></div>
+</section>
+
+<a href="index.html" class="back-btn">⬅ Back to Dashboard</a>
+
+<script>
+AOS.init();
+
+// Event Types and their pages
+const events = [
+  "Workshops",
+  "Exhibition",
+  "Networking",
+  "Demo Booth",
+  "Interactive Workshop",
+  "Seminar",
+  "Talk",
+  "Panel Discussion",
+  "Field Activities"
+];
+
+const eventPages = {
+  "Workshops": "workshops.html",
+  "Exhibition": "exhibition.html",
+  "Networking": "networking.html",
+  "Demo Booth": "demoBooth.html",
+  "Interactive Workshop": "interactiveWorkshop.html",
+  "Seminar": "seminar.html",
+  "Talk": "talk.html",
+  "Panel Discussion": "panelDiscussion.html",
+  "Field Activities": "fieldActivities.html"
+};
+
+// 9 distinct colors
+const colors = [
+  "#f87171", // red
+  "#60a5fa", // blue
+  "#34d399", // green
+  "#fbbf24", // amber
+  "#a78bfa", // purple
+  "#f472b6", // pink
+  "#fb923c", // orange
+  "#4ade80", // lime
+  "#c084fc"  // violet
+];
+
+const container = document.getElementById('event-list');
+const searchInput = document.getElementById('search');
+
+function renderEvents(filter="") {
+  container.innerHTML = "";
+  let filtered = events.filter(ev => ev.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach((ev, idx) => {
+    const card = document.createElement('div');
+    card.className = 'event-card';
+    card.style.background = colors[idx % colors.length];
+    card.textContent = ev;
+    card.setAttribute('data-aos', 'fade-in');
+    card.setAttribute('data-aos-duration', '1800');
+    card.setAttribute('data-aos-delay', (idx * 200));
+    card.onclick = () => {
+      const page = eventPages[ev];
+      if (page) window.location.href = page;  // Navigate to event page
+    };
+    container.appendChild(card);
+  });
+  AOS.refresh();
+}
+
+// Initial render
+renderEvents();
+
+// Filter on input
+searchInput.addEventListener('input', e => renderEvents(e.target.value));
+</script>
+
+</body>
+</html>
