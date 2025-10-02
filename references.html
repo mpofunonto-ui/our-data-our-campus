@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>References</title>
+  <style>
+    /* Global reset & fonts */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+      margin: 0;
+      background: linear-gradient(135deg, #f9fafb, #e9f0ff);
+      color: #333;
+      scroll-behavior: smooth; /* enable smooth scroll */
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: #2a2a72;
+      animation: fadeDown 1s ease-in-out;
+    }
+
+    h2 {
+      margin-top: 2em;
+      font-size: 1.4em;
+      color: #1a237e;
+      border-left: 5px solid #4a90e2;
+      padding-left: 10px;
+      animation: slideIn 0.6s ease-in-out;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 30px 0;
+      animation: fadeUp 0.8s ease-in-out;
+    }
+
+    ul li {
+      background: #fff;
+      margin: 8px 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    ul li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    a {
+      color: #1e88e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #1565c0;
+    }
+
+    /* Button styling */
+    .nav-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 12px 24px;
+      background: #38bdf8;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      body { padding: 20px; }
+      h1 { font-size: 2em; }
+      h2 { font-size: 1.2em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="dashboard.html" class="nav-btn">⬅ Back to Dashboard</a>
+
+  <h1 id="top">References</h1>
+
+  <h2 id="workshops">1. Interactive Workshops vs Passive Talks</h2>
+  <ul>
+    <li>Image: Canva. Data Workshop Template. <a href="https://www.canva.com/templates">https://www.canva.com/templates</a></li>
+    <li>Text: Perplexity AI. <a href="https://www.perplexity.ai">https://www.perplexity.ai</a></li>
+  </ul>
+
+  <h2 id="everyone">2. Data for Everyone</h2>
+  <ul>
+    <li>Text: McKinsey & Company. (2024). The next innovation revolution powered by AI. [Online] Available at: 
+      <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-next-innovation-revolution-powered-by-ai">Link</a>
+    </li>
+    <li>Image: Strategy (MicroStrategy). (2024). AI-Powered Analytics: Democratizing Data for Everyone [Online image]. 
+      Available at: 
+      <a href="https://images.contentstack.io/v3/assets/bltb564490bc5201f31/blt0224f35d5025ad91/66a8b237d141068945555c60/ai-powered-analytics.webp">Link</a>
+    </li>
+  </ul>
+
+  <h2 id="bias">3. Bias in Data</h2>
+  <ul>
+    <li>Furman, F. (2024, July 17). Data curation practices to minimize bias in medical AI. 
+      Towards Data Science. 
+      <a href="https://towardsdatascience.com/data-curation-practices-to-minimize-bias-in-medical-ai-379bf6983de2/">Link</a>
+    </li>
+  </ul>
+
+  <h2 id="walks">4. Data Walks and Field Activities</h2>
+  <ul>
+    <li>Image: Freepik. (2025). Students sitting on grass in front of a university building illustration. [Online]. 
+      Available at: <a href="https://www.freepik.com">https://www.freepik.com</a>
+    </li>
+  </ul>
+
+  <h2 id="visualization">5. Data Collection and Visualization</h2>
+  <ul>
+    <li>Walter, T., Shattuck, D.W., Baldock, R., Bastin, M.E., Carpenter, A.E., Duce, S., Ellenberg, J., Fraser, A., 
+      Hamilton, N., Pieper, S. and Ragan, M.A., 2010. Visualization of image data from cells to organisms. 
+      Nature methods, 7(Suppl 3), pp.S26-S41.</li>
+    <li>Beard, K., Deese, H. and Pettigrew, N.R., 2008. A framework for visualization and exploration of events. 
+      Information Visualization, 7(2), pp.133-151.</li>
+  </ul>
+
+  <h2 id="analysis">6. Hands-On Data Analysis: Exploring Student Performance</h2>
+  <ul>
+    <li>Facebook. (n.d.) Photograph. 
+      Available at: 
+      <a href="https://www.facebook.com/photo.php?fbid=701417009344530&set=a.324775427008692&type=3&mibextid=rS40aB7S9Ucbxw6v">Link</a> 
+      (Accessed: 30 September 2025).
+    </li>
+  </ul>
+
+  <!-- Go Up Button -->
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="#top" class="nav-btn">⬆ Go Up</a>
+  </div>
+
+</body>
+</html>
